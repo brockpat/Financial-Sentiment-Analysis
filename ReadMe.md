@@ -68,7 +68,7 @@ The model only misclassified 4 out of 68 statements. A closer look reveals that 
 * **APIs:** OpenAI (`text-embedding-3-small`)
 
 ```text
-├── data/                   # Pickled DataFrames containing text and embeddings (not tracked)
+├── data/                   # Pickled DataFrames containing text and embeddings
 ├── src/
 │   ├── pipeline.py         # Data fetching and OpenAI API embedding generation
 │   ├── model_logistic.py   # PyTorch Logistic Regression architecture and training loop
