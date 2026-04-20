@@ -1,16 +1,16 @@
-# 🚀 Financial Sentiment Analysis: A Transfer Learning Approach via LLM Embeddings
+# Financial Sentiment Analysis: A Transfer Learning Approach via LLM Embeddings
 
 An end-to-end machine learning pipeline that leverages **OpenAI text embeddings** and **Transfer Learning** to accurately classify the sentiment of complex, domain-specific financial text. 
 
 Built with PyTorch, this project demonstrates how to achieve LLM-level analytical accuracy at a fraction of the compute time and API cost.
 
-## 🎯 Executive Summary
+## Executive Summary
 
 * **Transfer Learning:** The model is trained on a generalized dataset of 10,000 tweets and evaluated zero-shot on highly complex, domain-specific financial statements and macroeconomic paragraphs. 
 * **Ultra-Fast & Cost-Effective:** Instead of querying an LLM (like GPT-5) for every prediction, which is slow and expensive, this pipeline fetches `text-embedding-3-small` vectors (256 dimensions) and processes them through a lightweight PyTorch Logistic Regression model. 
 * **High Accuracy:** Achieved **94.60% Validation Accuracy** on the training domain and an impressive **94.12% Accuracy** on the handcrafted financial test set.
 
-## 💡 Why This Approach? (Architecture Rationale)
+## Why This Approach? (Architecture Rationale)
 
 In modern NLP, sending millions of rows of text to an LLM API for sentiment classification is financially and computationally prohibitive. 
 
@@ -19,7 +19,7 @@ By separating the **Semantic Extraction** (OpenAI Text Embeddings) from the **Cl
 2. **Lightning-Fast Training:** Training a logistic regression model on 256-dimensional vectors takes seconds on a CPU, establishing a rapid feedback loop.
 3. **Rich Semantic Understanding:** The foundational embeddings already understand human language, allowing a simple linear decision boundary to solve a complex classification problem.
 
-## 🧠 Under the Hood: The Mechanics of the Model
+## Under the Hood: The Mechanics of the Model
 
 To build an efficient pipeline, the model relies on two core mathematical concepts: dense vector representation and iterative optimization.
 
@@ -31,7 +31,7 @@ The classifier is a PyTorch-based Logistic Regression model that learns a linear
 
 To train the model, **Gradient Descent** (specifically the Adam optimizer) is used. With just 200 epochs the model has learned which semantic features in the embedding space strongly correlate with positive or negative sentiment.
 
-## 📊 The Dataset & Evaluation
+## The Dataset & Evaluation
 
 To prove the model didn't just learn trivial sentiment (e.g., "The stock is good"), the evaluation is run on a **challenging test dataset** containing sophisticated financial jargon. The full set of examples is in `src/test_data.py`. 
 
@@ -45,7 +45,7 @@ To prove the model didn't just learn trivial sentiment (e.g., "The stock is good
 > *"The company announced a new strategic initiative aimed at revitalizing growth, which was initially welcomed by investors; nevertheless, its latest results revealed slowing momentum across core segments and a continued deterioration in cash flow. Management acknowledged the challenges but offered few concrete details on how or when conditions might improve, adding to market uncertainty."* (Negative)
 
 
-## 📈 Performance & Results
+## Performance & Results
 
 The model converged smoothly over 200 epochs using the Adam optimizer and Binary Cross Entropy loss.
 
@@ -60,7 +60,7 @@ The model only misclassified 4 out of 68 statements. A closer look reveals that 
 
 *Takeaway:* The model demonstrates a profound understanding of general and business sentiment, only failing on niche Wall Street mechanics that would typically require a specialized financial LLM (like FinBERT) to parse.
 
-## 🛠️ Tech Stack & Structure
+## Tech Stack & Structure
 
 * **Language:** Python
 * **Deep Learning:** PyTorch (`torch`, `torch.nn`)
